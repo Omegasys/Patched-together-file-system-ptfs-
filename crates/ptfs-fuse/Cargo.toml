@@ -1,0 +1,4 @@
+[dependencies]
+fuser = "0.14"
+libc = "0.2"
+ptfs-api = { path = "../ptfs-api" }
