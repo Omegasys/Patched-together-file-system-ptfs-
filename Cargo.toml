@@ -1,0 +1,32 @@
+[workspace]
+members = [
+    "crates/ptfs-core",
+    "crates/ptfs-storage",
+    "crates/ptfs-allocator",
+    "crates/ptfs-log",
+    "crates/ptfs-integrity",
+    "crates/ptfs-compression",
+    "crates/ptfs-dedup",
+    "crates/ptfs-encryption",
+    "crates/ptfs-cache",
+    "crates/ptfs-raid",
+    "crates/ptfs-distributed",
+    "crates/ptfs-metadata",
+    "crates/ptfs-fuse",
+    "crates/ptfs-cli",
+    "crates/ptfs-api"
+]
+
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+license = "MIT"
+authors = ["PTFS Contributors"]
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+thiserror = "1"
+anyhow = "1"
+blake3 = "1"
+tokio = { version = "1", features = ["full"] }
