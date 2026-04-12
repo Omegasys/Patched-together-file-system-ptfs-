@@ -1,32 +1,27 @@
-[workspace]
-members = [
-    "crates/ptfs-core",
-    "crates/ptfs-storage",
-    "crates/ptfs-allocator",
-    "crates/ptfs-log",
-    "crates/ptfs-integrity",
-    "crates/ptfs-compression",
-    "crates/ptfs-dedup",
-    "crates/ptfs-encryption",
-    "crates/ptfs-cache",
-    "crates/ptfs-raid",
-    "crates/ptfs-distributed",
-    "crates/ptfs-metadata",
-    "crates/ptfs-fuse",
-    "crates/ptfs-cli",
-    "crates/ptfs-api"
-]
-
-resolver = "2"
-
-[workspace.package]
+```toml
+[package]
+name = "ptfs-core"
+version = "0.1.0"
 edition = "2021"
+description = "Core filesystem logic for PTFS (Patched-Together File System)"
 license = "MIT"
 authors = ["PTFS Contributors"]
 
-[workspace.dependencies]
-serde = { version = "1", features = ["derive"] }
-thiserror = "1"
-anyhow = "1"
-blake3 = "1"
-tokio = { version = "1", features = ["full"] }
+[lib]
+name = "ptfs_core"
+path = "src/lib.rs"
+
+[dependencies]
+# Workspace shared deps
+serde = { workspace = true, features = ["derive"] }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+blake3 = { workspace = true }
+tokio = { workspace = true }
+
+# Core-specific deps
+rand = "0.8"              # Temporary ID generation (replace later)
+uuid = { version = "1", features = ["v4"] }  # Optional stable IDs
+parking_lot = "0.12"      # Faster locking than std::sync
+log = "0.4"               # Logging
+```
